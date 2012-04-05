@@ -5,10 +5,5 @@ class apache::mod::python {
     name    => $apache::params::mod_python_package,
     ensure  => installed,
     require => Package["httpd"];
-  }
-
-  a2mod { "python": ensure => present; }
-
+  } -> a2mod { "python": ensure => present; }
 }
-
-

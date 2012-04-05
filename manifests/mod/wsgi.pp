@@ -5,9 +5,5 @@ class apache::mod::wsgi {
     name    => $apache::params::mod_wsgi_package,
     ensure  => installed,
     require => Package["httpd"];
-  }
-
-  a2mod { "wsgi": ensure => present; }
-
+  } -> a2mod { "wsgi": ensure => present; }
 }
-

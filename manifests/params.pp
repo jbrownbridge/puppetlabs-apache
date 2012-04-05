@@ -18,17 +18,20 @@
 #
 class apache::params {
 
-  $user          = 'www-data'
-  $group         = 'www-data'
-  $ssl           = 'true'
-  $template      = 'apache/vhost-default.conf.erb'
-  $priority      = '25'
-  $servername    = ''
-  $serveraliases = ''
-  $auth          = false
-  $redirect_ssl  = false
-  $options       = 'Indexes FollowSymLinks MultiViews'
-  $vhost_name    = '*'
+  $user                 = 'www-data'
+  $group                = 'www-data'
+  $ssl                  = 'true'
+  $template             = 'apache/vhost-default.conf.erb'
+  $priority             = '25'
+  $servername           = ''
+  $serveraliases        = ''
+  $auth                 = false
+  $redirect_ssl         = false
+  $options              = 'Indexes FollowSymLinks MultiViews'
+  $vhost_name           = '*'
+  $django_static_path   = ''
+  $django_media_path    = ''
+  $wsgi_file_path       = ''
 
   case $operatingsystem {
     'centos', 'redhat', 'fedora', 'scientific': {

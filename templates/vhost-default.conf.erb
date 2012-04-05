@@ -18,6 +18,20 @@ NameVirtualHost <%= vhost_name %>:<%= port %>
     Order allow,deny
     allow from all
   </Directory>
+
+<% if django_media_path != '' -%>
+  Alias /media  <%= django_media_path %>
+<% end -%>
+<% if django_static_path != '' -%>
+  Alias /static <%= django_static_path %>
+<% end -%>
+
+<% if wsgi_file_path != '' -%>
+  WSGIScriptAlias / <%= wsgi_file_path %>
+  WSGIDaemonProcess <%= name %> processes=<%= processorcount %>
+  WSGIProcessGroup <%= name %>
+<% end -%>
+
   ErrorLog /var/log/<%= apache_name %>/<%= name %>_error.log
   LogLevel warn
   CustomLog /var/log/<%= apache_name %>/<%= name %>_access.log combined

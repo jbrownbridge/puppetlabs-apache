@@ -13,6 +13,9 @@
 # - The $serveraliases of the site
 # - The $options for the given vhost
 # - The $vhost_name for name based virtualhosting, defaulting to *
+# - The $django_static_path is the directory the /static Alias points to
+# - The $django_media_path is the directory the /media Alias points to
+# - The $wsgi_file_path is the wsgi file for the virtual host
 #
 # Actions:
 # - Install Apache Virtual Hosts
@@ -40,7 +43,10 @@ define apache::vhost(
     $redirect_ssl       = $apache::params::redirect_ssl,
     $options            = $apache::params::options,
     $apache_name        = $apache::params::apache_name,
-    $vhost_name         = $apache::params::vhost_name
+    $vhost_name         = $apache::params::vhost_name,
+    $django_static_path = $apache::params::django_static_path,
+    $django_media_path  = $apache::params::django_media_path,
+    $wsgi_file_path     = $apache::params::wsgi_file_path
   ) {
 
   include apache
