@@ -18,11 +18,15 @@ class apache {
     name   => $apache::params::apache_name,
     ensure => installed,
   }
+  
   service { 'httpd':
-    name      => $apache::params::apache_name,
-    ensure    => running,
-    enable    => true,
-    subscribe => Package['httpd'],
+    name        => $apache::params::apache_name,
+    ensure      => running,
+    enable      => true,
+    subscribe   => Package['httpd'],
+    hasrestart  => true,
+    hasstatus   => true,
+    restart     => "/usr/sbin/apache2ctl configtest && /usr/sbin/apache2ctl -k graceful",
   }
 
   file { "httpd_vdir":
