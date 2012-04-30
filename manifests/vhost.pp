@@ -46,7 +46,9 @@ define apache::vhost(
     $vhost_name         = $apache::params::vhost_name,
     $django_static_path = $apache::params::django_static_path,
     $django_media_path  = $apache::params::django_media_path,
-    $wsgi_file_path     = $apache::params::wsgi_file_path
+    $wsgi_file_path     = $apache::params::wsgi_file_path,
+    $user               = $apache::params::user,
+    $group              = $apache::params::group
   ) {
 
   include apache

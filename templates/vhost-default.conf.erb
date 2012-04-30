@@ -28,7 +28,7 @@ NameVirtualHost <%= vhost_name %>:<%= port %>
 
 <% if wsgi_file_path != '' -%>
   WSGIScriptAlias / <%= wsgi_file_path %>
-  WSGIDaemonProcess <%= name %> processes=<%= processorcount %>
+  WSGIDaemonProcess <%= name %> processes=<%= processorcount %> user=<%= user %> group=<%= group %>
   WSGIProcessGroup <%= name %>
 <% end -%>
 
