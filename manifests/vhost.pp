@@ -73,6 +73,12 @@ define apache::vhost(
     }
   }
 
+  case $operatingsystem {
+    'ubuntu','debian': {
+      a2mod { "proxy_http": ensure => present, }
+    }
+  }
+
   file { "${priority}-${name}.conf":
       name    => "${apache::params::vdir}/${priority}-${name}.conf",
       content => template($template),
