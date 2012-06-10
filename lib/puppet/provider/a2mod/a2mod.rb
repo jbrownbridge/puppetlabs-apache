@@ -1,8 +1,8 @@
 Puppet::Type.type(:a2mod).provide(:a2mod) do
     desc "Manage Apache 2 modules on Debian and Ubuntu"
  
-    commands :encmd => "a2enmod"
-    commands :discmd => "a2dismod"
+    commands :encmd   => "/usr/sbin/a2enmod"
+    commands :discmd  => "/usr/sbin/a2dismod"
  
     defaultfor :operatingsystem => [:debian, :ubuntu]
 
