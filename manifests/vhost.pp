@@ -33,7 +33,7 @@
 define apache::vhost(
     $port,
     $docroot,
-    $configure_firewall = true,
+    $configure_firewall = false,
     $ssl                = $apache::params::ssl,
     $template           = $apache::params::template,
     $priority           = $apache::params::priority,
