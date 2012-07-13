@@ -51,7 +51,9 @@ define apache::vhost(
     $group              = $apache::params::group
   ) {
 
-  include apache
+  if !defined(Class['Apache']) {
+      include apache
+  }
 
   if $servername == '' {
     $srvname = $name
@@ -60,7 +62,9 @@ define apache::vhost(
   }
 
   if $ssl == true {
-    include apache::ssl
+    if !defined(Class['Apache::Ssl']) {
+        include apache::ssl
+    }
   }
 
   # Since the template will use auth, redirect to https requires mod_rewrite

@@ -13,7 +13,9 @@
 # Sample Usage:
 #
 class apache {
-  include apache::params
+  if !defined(Class['Apache::Params']) {
+      include apache::params
+  }
   package { 'httpd':
     name   => $apache::params::apache_name,
     ensure => installed,
