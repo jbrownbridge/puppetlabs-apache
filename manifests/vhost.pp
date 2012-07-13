@@ -79,7 +79,9 @@ define apache::vhost(
 
   case $operatingsystem {
     'ubuntu','debian': {
-      a2mod { "proxy_http": ensure => present, }
+      if !defined(A2mod['proxy_http']) {
+        a2mod { "proxy_http": ensure => present, }
+      }
     }
   }
 
